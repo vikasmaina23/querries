@@ -1,0 +1,68 @@
+// player.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PlayerService {
+  private apiURL = 'your-backend-api-url';
+
+  constructor(private http: HttpClient) {}
+
+  getPlayers() {
+    return this.http.get(`${this.apiURL}/players`);
+  }
+  const express = require('express');
+const app = express();
+const port = 3000;
+
+// Sample player data (you should replace this with your actual data source)
+const players =
+
+// API endpoint to get the player with the most touchdown passes
+app.get('/players/most-touchdown-passes', (req, res) => {
+  const mostTouchdownPassesPlayer = players.reduce((maxPlayer, player) => {
+    return player.touchdownPasses > maxPlayer.touchdownPasses ? player : maxPlayer;
+  });
+
+  res.json(mostTouchdownPassesPlayer);
+});
+
+// API endpoint to get the player with the most rushing yards
+app.get('/players/most-rushing-yards', (req, res) => {
+  const mostRushingYardsPlayer = players.reduce((maxPlayer, player) => {
+    return player.rushingYards > maxPlayer.rushingYards ? player : maxPlayer;
+  });
+
+  res.json(mostRushingYardsPlayer);
+});
+
+// API endpoint to get the player with the least rushing yards
+app.get('/players/least-rushing-yards', (req, res) => {
+  const leastRushingYardsPlayer = players.reduce((minPlayer, player) => {
+    return player.rushingYards < minPlayer.rushingYards ? player : minPlayer;
+  });
+
+  res.json(leastRushingYardsPlayer);
+});
+
+// API endpoint to get a list of players sorted by field goals made in descending order
+app.get('/players/sorted-by-field-goals', (req, res) => {
+  const sortedPlayers = players.sort((a, b) => b.fieldGoalsMade - a.fieldGoalsMade);
+
+  res.json(sortedPlayers);
+});
+
+// API endpoint to get the player with the most number of sacks
+app.get('/players/most-sacks', (req, res) => {
+  const mostSacksPlayer = players.reduce((maxPlayer, player) => {
+    return player.sacks > maxPlayer.sacks ? player : maxPlayer;
+  });
+
+  res.json(mostSacksPlayer);
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
